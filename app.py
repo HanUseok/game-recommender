@@ -9,4 +9,4 @@ def index():
     return render_template("result.html", result="이곳에 추천 게임 결과가 표시됩니다!", time=now)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0", port=10000)
