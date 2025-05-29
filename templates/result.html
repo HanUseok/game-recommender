@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>게임 추천 결과</title>
 </head>
 <body>
-    <h1>🎮 추천 게임 결과</h1>
-    <p><strong>{{ result }}</strong></p>
+    <h1>당신을 위한 게임 추천 결과</h1>
     <p>추천 시간: {{ time }}</p>
+    <ul>
+        {% for game in result %}
+            <li>{{ game }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
