@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
 import pandas as pd
 import datetime
 
@@ -8,7 +9,10 @@ app = Flask(__name__)
 
 # 구글 시트 연결 설정
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+with open("/etc/secrets/credentials.json") as f:
+    creds_json = json.load(f)
+
+creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_json, scope)
 client = gspread.authorize(creds)
 
 # 너의 설문 데이터가 있는 시트 URL
